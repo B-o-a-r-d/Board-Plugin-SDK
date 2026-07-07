@@ -39,6 +39,7 @@ inspects `instanceof` to know what a plugin can do.
 | `Contracts\EnrichesCards` | Attach external refs to a card and resolve them into a status widget |
 | `Contracts\DefinesActivities` | Log activities and get a dedicated tab in the activity slide-over |
 | `Contracts\ProvidesMcpTools` | Contribute tools to the host's MCP server |
+| `Contracts\ProvidesOAuth` | Declare a provider's OAuth endpoints; the host drives the flow |
 | `Contracts\PluginContext` | *(host-bound)* let decoupled plugin code read board state safely |
 
 Value object: `PluginListItem` — a read-only virtual card (`title`, `subtitle`,

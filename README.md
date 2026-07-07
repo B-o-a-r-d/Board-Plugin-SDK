@@ -1,6 +1,6 @@
-# B0ard Plugin SDK
+# Board Plugin SDK
 
-Contracts and value objects for building [B0ard](https://board.test) Kanban plugins (Power-Ups).
+Contracts and value objects for building [Board](https://board.test) Kanban plugins (Power-Ups).
 
 Plugins are ordinary Composer packages that depend on **this SDK only** — never on
 the host application — which is what lets them ship and version independently

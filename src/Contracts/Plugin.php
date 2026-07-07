@@ -3,7 +3,7 @@
 namespace Board\PluginSdk\Contracts;
 
 /**
- * A B0ard plugin (Power-Up). Concrete plugins live in their own Composer
+ * A Board plugin (Power-Up). Concrete plugins live in their own Composer
  * packages and register themselves into the PluginRegistry from their service
  * provider (via Laravel package auto-discovery). The host app never depends on
  * a plugin directly — only on this SDK — which is what lets plugins ship and

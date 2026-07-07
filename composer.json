@@ -1,6 +1,6 @@
 {
     "name": "board/plugin-sdk",
-    "description": "SDK and contracts for building B0ard Kanban plugins (Power-Ups).",
+    "description": "SDK and contracts for building Board Kanban plugins (Power-Ups).",
     "type": "library",
     "license": "MIT",
     "keywords": ["board", "kanban", "plugin", "sdk"],

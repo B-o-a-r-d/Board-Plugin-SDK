@@ -12,14 +12,28 @@ namespace Board\PluginSdk\Contracts;
  * The host resolves `client_id` / `client_secret` from the instance config
  * first (entered via {@see Plugin::configFields()}), then falls back to
  * `config("services.{oauthProvider}.client_id")` for an instance-wide app.
+ *
+ * Self-hosted providers: the host passes the instance's stored `$config` to
+ * {@see self::authorizeUrl()}, {@see self::tokenUrl()} and
+ * {@see self::resolveAccount()}, so a plugin can derive its endpoints from a
+ * per-board config field (e.g. an `instance_url` declared in `configFields()`).
+ * The parameter is optional — providers with a fixed host may ignore it.
  */
 interface ProvidesOAuth
 {
-    /** The provider's authorization endpoint (where the user grants access). */
-    public function authorizeUrl(): string;
+    /**
+     * The provider's authorization endpoint (where the user grants access).
+     *
+     * @param  array<string, mixed>  $config  the instance's stored config
+     */
+    public function authorizeUrl(array $config = []): string;
 
-    /** The provider's token endpoint (POST form-encoded, JSON `access_token` back). */
-    public function tokenUrl(): string;
+    /**
+     * The provider's token endpoint (POST form-encoded, JSON `access_token` back).
+     *
+     * @param  array<string, mixed>  $config  the instance's stored config
+     */
+    public function tokenUrl(array $config = []): string;
 
     /**
      * OAuth scopes to request.
@@ -41,6 +55,8 @@ interface ProvidesOAuth
      * Resolve a human label for the connected account (e.g. the login/username)
      * from a freshly obtained access token, or null when it cannot be read.
      * Called by the host right after the token exchange to show who is connected.
+     *
+     * @param  array<string, mixed>  $config  the instance's stored config
      */
-    public function resolveAccount(string $accessToken): ?string;
+    public function resolveAccount(string $accessToken, array $config = []): ?string;
 }

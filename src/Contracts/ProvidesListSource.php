@@ -2,6 +2,7 @@
 
 namespace Board\PluginSdk\Contracts;
 
+use Board\PluginSdk\PluginListItem;
 use Illuminate\Support\Collection;
 
 /**
@@ -34,7 +35,7 @@ interface ProvidesListSource
      * @param  array<string, mixed>  $config  the installed instance config (incl. OAuth token)
      * @param  string  $mode  one of sourceModes()' keys
      * @param  array<string, mixed>  $sourceConfig  the per-list config
-     * @return Collection<int, \Board\PluginSdk\PluginListItem>
+     * @return Collection<int, PluginListItem>
      */
     public function items(array $config, string $mode, array $sourceConfig): Collection;
 }

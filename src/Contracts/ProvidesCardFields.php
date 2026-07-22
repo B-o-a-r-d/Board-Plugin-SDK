@@ -2,6 +2,8 @@
 
 namespace Board\PluginSdk\Contracts;
 
+use Board\PluginSdk\Sdk;
+
 /**
  * A plugin capability: inject custom fields into every card of a board where
  * the plugin is installed and active. The host materializes each declaration
@@ -9,7 +11,7 @@ namespace Board\PluginSdk\Contracts;
  * uninstall) and owns the storage, validation and rendering of values.
  *
  * Adding this interface is additive — implementing it is optional and does not
- * bump {@see \Board\PluginSdk\Sdk::CONTRACT_VERSION}.
+ * bump {@see Sdk::CONTRACT_VERSION}.
  */
 interface ProvidesCardFields
 {

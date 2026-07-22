@@ -2,7 +2,9 @@
 
 namespace Board\PluginSdk;
 
+use Board\PluginSdk\Contracts\AssetRegistrar;
 use Board\PluginSdk\Contracts\Plugin;
+use Board\PluginSdk\Contracts\ProvidesAssets;
 use Illuminate\Support\ServiceProvider;
 use ReflectionClass;
 
@@ -34,6 +36,27 @@ abstract class PluginServiceProvider extends ServiceProvider
         if ($path !== null && is_dir($path)) {
             $this->loadTranslationsFrom($path, $plugin::key());
         }
+
+        // Register the plugin's pre-built assets (dist/) with the host so it can
+        // serve them on the plugin's pages. Guarded so the package stays
+        // loadable outside a Board host.
+        if ($plugin instanceof ProvidesAssets && $this->app->bound(AssetRegistrar::class)) {
+            $this->app->make(AssetRegistrar::class)->register(
+                $plugin::key(),
+                $this->packagePath(),
+                $plugin->assetStyles(),
+                $plugin->assetScripts(),
+            );
+        }
+    }
+
+    /**
+     * Absolute path of the package root (where `dist/` and `lang/` live) —
+     * the directory holding `src/`, derived from the provider's location.
+     */
+    protected function packagePath(): string
+    {
+        return dirname((new ReflectionClass($this))->getFileName(), 2);
     }
 
     /**

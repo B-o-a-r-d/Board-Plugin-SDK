@@ -2,12 +2,13 @@
 
 namespace Board\PluginSdk\Support;
 
+use Board\PluginSdk\Contracts\ProvidesSettings;
 use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Facades\DB;
 
 /**
  * Reads and writes a plugin's INSTANCE-level settings (declared via
- * {@see \Board\PluginSdk\Contracts\ProvidesSettings}). Values are persisted as a
+ * {@see ProvidesSettings}). Values are persisted as a
  * single encrypted JSON blob in the host's shared `settings` key/value table,
  * under `plugin.<key>` — so a plugin (and the marketplace UI) can read/write them
  * without depending on the host's models. Encryption matches the at-rest posture

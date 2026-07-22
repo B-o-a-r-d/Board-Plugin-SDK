@@ -2,13 +2,15 @@
 
 namespace Board\PluginSdk\Contracts;
 
+use Board\PluginSdk\Support\PluginSettings;
+
 /**
  * Opt-in capability: a plugin that has INSTANCE-level settings — configured once
  * by a platform admin in the marketplace after install, not per board.
  *
  * This is the "no-code" counterpart to editing `.env`: instead of a deployment
  * setting environment variables, the plugin declares its settings here and the
- * host renders a form and persists the values (see {@see \Board\PluginSdk\Support\PluginSettings}).
+ * host renders a form and persists the values (see {@see PluginSettings}).
  *
  * Contrast with {@see Plugin::configFields()}, which is PER-BOARD config stored
  * on each installed board instance (e.g. OAuth client id/secret for that board).

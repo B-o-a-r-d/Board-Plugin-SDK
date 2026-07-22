@@ -3,6 +3,7 @@
 namespace Board\PluginSdk\Contracts;
 
 use Board\PluginSdk\PluginToast;
+use Board\PluginSdk\Sdk;
 
 /**
  * A plugin capability: contribute actions to the host's automation builder
@@ -12,7 +13,7 @@ use Board\PluginSdk\PluginToast;
  * other actions of the rule.
  *
  * Adding this interface is additive — implementing it is optional and does not
- * bump {@see \Board\PluginSdk\Sdk::CONTRACT_VERSION}.
+ * bump {@see Sdk::CONTRACT_VERSION}.
  */
 interface ProvidesAutomationActions
 {
